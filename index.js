@@ -270,40 +270,8 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.post("/hw", function(req, res) {
-  var thisday = new Date();
+restService.post("/money", function(req, res) {
   var type1 = req.body.queryResult.parameters.type1;
-  var num1;
-  if(type1 == "large project"){
-    num1 = 4;
-  }
-  else if(type1 == "small project"){
-    num1 = 3;
-  }
-  else{
-    num1 = 2;
-  }
-  var type2 = req.body.queryResult.parameters.type2;
-  var num2;
-  if(type2 == "large project"){
-    num2 = 4;
-  }
-  else if(type2 == "small project"){
-    num2 = 3;
-  }
-  else{
-    num2 = 2;
-  }
-  subject1 = req.body.queryResult.parameters.subject1;
-  subject2 = req.body.queryResult.parameters.subject2;
-  date1 = req.body.queryResult.parameters.date1;
-  date2 = req.body.queryResult.parameters.date2;
-  var timeDiff1 = Math.abs(parseFloat((date1.charAt(8) + date1.charAt(9))) - thisday.getDate());
-  var diffDays1 = Math.ceil(timeDiff1);
-  var timeDiff2 = Math.abs(parseFloat((date2.charAt(8) + date2.charAt(9))) - thisday.getDate());
-  var diffDays2 = Math.ceil(timeDiff2);
-  priority1 = 4*diffDays1 - num1;
-  priority2 = 4*diffDays2 - num2;
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
