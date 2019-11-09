@@ -9,6 +9,7 @@ var date1;
 var subject2;
 var date2;
 var priority1, priority2;
+var occasion;
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -101,75 +102,8 @@ function listEvents(auth) {
 
 function writeEvents(auth) {
   const calendar = google.calendar({version: 'v3', auth});
-  var today = new Date();
-  var date;
-  if(today.getDate() >= 10){
-    date = today.getFullYear()+ '-' + (today.getMonth()+1) + '-' + today.getDate();
-  }
-  else{
-    date = today.getFullYear()+ '-' + (today.getMonth()+1) + '-0' + today.getDate();
-  }
-  let arr = [priority1, priority2]
-  arr.sort();
-  if(arr[1] == priority1){
-var event = {
-  'summary': subject1,
-  'location': '800 Howard St., San Francisco, CA 94103',
-  'description': 'A chance to hear more about Google\'s developer products.',
-  'start': {
-    'dateTime': date + 'T08:04:00-06:00',
-    'timeZone': 'America/New_York',
-  },
-  'end': {
-    'dateTime': date + 'T08:05:00-07:00',
-    'timeZone': 'America/New_York', 
-  },
-  'recurrence': [
-    'RRULE:FREQ=DAILY;COUNT=1'
-  ],
-  'attendees': [
-    {'email': 'lpage@example.com'},
-    {'email': 'sbrin@example.com'},
-  ],
-  'reminders': {
-    'useDefault': false,
-    'overrides': [
-      {'method': 'email', 'minutes': 24 * 60},
-      {'method': 'popup', 'minutes': 10},
-    ],
-  },
-};
-var event2 = {
-  'summary': subject2,
-  'location': '800 Howard St., San Francisco, CA 94103',
-  'description': 'A chance to hear more about Google\'s developer products.',
-  'start': {
-    'dateTime': date + 'T08:06:00-08:00',
-    'timeZone': 'America/New_York',
-  },
-  'end': {
-    'dateTime': date + 'T08:06:00-08:00',
-    'timeZone': 'America/New_York', 
-  },
-  'recurrence': [
-    'RRULE:FREQ=DAILY;COUNT=1'
-  ],
-  'attendees': [
-    {'email': 'lpage@example.com'},
-    {'email': 'sbrin@example.com'},
-  ],
-  'reminders': {
-    'useDefault': false,
-    'overrides': [
-      {'method': 'email', 'minutes': 24 * 60},
-      {'method': 'popup', 'minutes': 10},
-    ],
-  },
-};
-  }
-else{
   var event = {
-  'summary': subject2,
+  'summary': occasion,
   'location': '800 Howard St., San Francisco, CA 94103',
   'description': 'A chance to hear more about Google\'s developer products.',
   'start': {
@@ -195,34 +129,7 @@ else{
     ],
   },
 };
-var event2 = {
-  'summary': subject1,
-  'location': '800 Howard St., San Francisco, CA 94103',
-  'description': 'A chance to hear more about Google\'s developer products.',
-  'start': {
-    'dateTime': date + 'T08:04:00-06:00',
-    'timeZone': 'America/New_York',
-  },
-  'end': {
-    'dateTime': date + 'T08:04:00-06:00', 
-    'timeZone': 'America/New_York', 
-  },
-  'recurrence': [
-    'RRULE:FREQ=DAILY;COUNT=1'
-  ],
-  'attendees': [
-    {'email': 'lpage@example.com'},
-    {'email': 'sbrin@example.com'},
-  ],
-  'reminders': {
-    'useDefault': false,
-    'overrides': [
-      {'method': 'email', 'minutes': 24 * 60},
-      {'method': 'popup', 'minutes': 10},
-    ],
-  },
-};
-}
+
 calendar.events.insert({
   auth: auth,
   calendarId: 'primary',
@@ -234,18 +141,6 @@ calendar.events.insert({
   }
   console.log('Event created: %s', event.htmlLink);
 });
-calendar.events.insert({
-  auth: auth,
-  calendarId: 'primary',
-  resource: event2,
-}, function(err, event2) {
-  if (err) {
-    console.log('There was an error contacting the Calendar service: ' + err);
-    return;
-  }
-  console.log('Event created: %s', event2.htmlLink);
-});
-
 }
 
 /* chirayu add */
@@ -271,16 +166,16 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/money", function(req, res) {
-  var Income = req.body.queryResult.parameters.Income;
-  var Occasion = req.body.queryResult.parameters.Occasion;
-  var Budget = req.body.queryResult.parameters.Budget;
-  var Eventdate = req.body.queryResult.parameters.Event_Date;
-  var Recurring = req.body.queryResult.parameters.Recurring_Expenses;
-  var Savings = Income - (Recurring + Budget);
+  var income = req.body.queryResult.parameters.Income;
+  occasion = req.body.queryResult.parameters.Occasion;
+  var budget = req.body.queryResult.parameters.Budget;
+  var eventdate = req.body.queryResult.parameters.Event_Date;
+  var recurring = req.body.queryResult.parameters.Recurring_Expenses;
+  var savings = Income - (Recurring + Budget);
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
-    req.body.queryResult.parameters.Budget 
+    req.body.queryResult.parameters.budget 
       ? "good morning"
       : "Seems like some problem. Speak again.";
   
