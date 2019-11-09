@@ -267,12 +267,11 @@ restService.post("/money", function(req, res) {
       req.body.queryResult.parameters.income
         ? "good morning"
         : frag1 + frag2 + frag3 + frag4;
-     }
+  }
    
    
    
     
-  }
      
      
   // Load client secrets from a local file.
