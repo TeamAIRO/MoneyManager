@@ -12,6 +12,11 @@ var priority1, priority2;
 var occasion;
 var event_date;
 var totalprice = 0;
+var income;
+var recurring;
+var budget;
+var savings;
+var negsavings;
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -175,13 +180,13 @@ restService.post("/money", function(req, res) {
   }
   totalprice = totalprice + price;
   if(totalprice == 0){
-  var income = req.body.queryResult.parameters.Income;
+  income = req.body.queryResult.parameters.Income;
   occasion = req.body.queryResult.parameters.Occasion;
-  var budget = req.body.queryResult.parameters.Budget;
+  budget = req.body.queryResult.parameters.Budget;
   event_date = req.body.queryResult.parameters.Event_Date;
-  var recurring = req.body.queryResult.parameters.Recurring_Expenses;
-  var savings = income - (recurring + budget);
-  var negsavings = -1 * savings;
+  recurring = req.body.queryResult.parameters.Recurring_Expenses;
+  savings = income - (recurring + budget);
+  negsavings = -1 * savings;
   if(savings < 0){
   var speech =
     req.body.queryResult &&
