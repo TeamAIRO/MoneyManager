@@ -4,6 +4,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 /* chirayu add */
+const grocerystat = 644;
+const gasstat = 386;
+const elecstat = 100;
+const waterstat = 83;
+var mgasstat = 0;
+var mgrocerystat = 0;
+var melecstat = 0;
+var mwaterstat = 0;
 var subject1;
 var date1;
 var subject2;
@@ -179,6 +187,7 @@ restService.post("/money", function(req, res) {
     price = 0
   }
   totalprice = totalprice + price;
+  if(mgasstat == 0){
   if(totalprice == 0){
   income = req.body.queryResult.parameters.Income;
   occasion = req.body.queryResult.parameters.Occasion;
@@ -219,8 +228,49 @@ restService.post("/money", function(req, res) {
       req.body.queryResult.parameters &&
       req.body.queryResult.parameters.income
         ? "good morning"
-        : "You can not buy this";
+        : "This purchase is not recommended";
      }
+  }
+  else{
+    mgasstat = req.body.queryResult.parameters.stat_gas;
+    mgrocerystat = req.body.queryResult.parameters.stat_grocery;
+    melecstat = req.body.queryResult.parameters.stat_electricity;
+    mwaterstat = req.body.queryResult.parameters.stat_water;
+    if(mgasstat>gasstat){
+      var frag1 = " Your gas spending is above average. Try to reduce.";
+    }
+    else{
+      var frag1 = " Your gas spending is below average. You're doing fine.";
+    }
+    if(mgrocerystat>grocerystat){
+      var frag2 = " Your food spending is above average. Try to reduce.";
+    }
+    else{
+      var frag2 = " Your food spending is below average. You're doing fine.";
+    }
+    if(melecstat>elecstat){
+      var frag3 = " Your electricity spending is above average. Try to reduce.";
+    }
+    else{
+      var frag3 = " Your electricity spending is below average. You're doing fine.";
+    }
+    if(mwaterstat>waterstat){
+      var frag4 = " Your water spending is above average. Try to reduce.";
+    }
+    else{
+      var frag4 = " Your water spending is below average. You're doing fine.";
+    }
+    var speech =
+      req.body.queryResult &&
+      req.body.queryResult.parameters &&
+      req.body.queryResult.parameters.income
+        ? "good morning"
+        : frag1 + frag2 + frag3 + frag4;
+     }
+   
+   
+   
+    
   }
      
      
