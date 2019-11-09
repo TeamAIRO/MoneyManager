@@ -281,7 +281,7 @@ restService.post("/money", function(req, res) {
     req.body.queryResult &&
     req.body.queryResult.parameters &&
     req.body.queryResult.parameters.Budget 
-      ? "check your calendar. Your savings is " + Savings
+      ? "good morning"
       : "Seems like some problem. Speak again.";
   
   /*** chirayu add */
