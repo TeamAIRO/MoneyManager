@@ -10,6 +10,7 @@ var subject2;
 var date2;
 var priority1, priority2;
 var occasion;
+var event_date;
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -107,11 +108,11 @@ function writeEvents(auth) {
   'location': '800 Howard St., San Francisco, CA 94103',
   'description': 'A chance to hear more about Google\'s developer products.',
   'start': {
-    'dateTime': date + 'T08:06:00-08:00',
+    'dateTime': event_date + 'T08:06:00-08:00',
     'timeZone': 'America/New_York',
   },
   'end': {
-    'dateTime': date + 'T08:06:00-08:00',
+    'dateTime': event_date + 'T08:06:00-08:00',
     'timeZone': 'America/New_York', 
   },
   'recurrence': [
@@ -169,7 +170,7 @@ restService.post("/money", function(req, res) {
   var income = req.body.queryResult.parameters.Income;
   occasion = req.body.queryResult.parameters.Occasion;
   var budget = req.body.queryResult.parameters.Budget;
-  var eventdate = req.body.queryResult.parameters.Event_Date;
+  event_date = req.body.queryResult.parameters.Event_Date;
   var recurring = req.body.queryResult.parameters.Recurring_Expenses;
   var savings = income - (recurring + budget);
   var speech =
