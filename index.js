@@ -168,13 +168,6 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/money", function(req, res) {
-  var income = req.body.queryResult.parameters.Income;
-  occasion = req.body.queryResult.parameters.Occasion;
-  var budget = req.body.queryResult.parameters.Budget;
-  event_date = req.body.queryResult.parameters.Event_Date;
-  var recurring = req.body.queryResult.parameters.Recurring_Expenses;
-  var savings = income - (recurring + budget);
-  var negsavings = -1 * savings;
   var item = req.body.queryResult.parameters.Item;
   var price = req.body.queryResult.parameters.Price;
   if(price == undefined){
@@ -182,6 +175,13 @@ restService.post("/money", function(req, res) {
   }
   totalprice = totalprice + price;
   if(totalprice == 0){
+  var income = req.body.queryResult.parameters.Income;
+  occasion = req.body.queryResult.parameters.Occasion;
+  var budget = req.body.queryResult.parameters.Budget;
+  event_date = req.body.queryResult.parameters.Event_Date;
+  var recurring = req.body.queryResult.parameters.Recurring_Expenses;
+  var savings = income - (recurring + budget);
+  var negsavings = -1 * savings;
   if(savings < 0){
   var speech =
     req.body.queryResult &&
