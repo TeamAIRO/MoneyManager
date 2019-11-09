@@ -108,11 +108,11 @@ function writeEvents(auth) {
   'location': '800 Howard St., San Francisco, CA 94103',
   'description': 'A chance to hear more about Google\'s developer products.',
   'start': {
-    'dateTime': event_date + 'T08:06:00-08:00',
+    'dateTime': event_date,
     'timeZone': 'America/New_York',
   },
   'end': {
-    'dateTime': event_date + 'T08:06:00-08:00',
+    'dateTime': event_date,
     'timeZone': 'America/New_York', 
   },
   'recurrence': [
