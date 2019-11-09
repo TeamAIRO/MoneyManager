@@ -271,14 +271,17 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/money", function(req, res) {
-  var Salary = req.body.queryResult.parameters.Salary;
+  var Income = req.body.queryResult.prameters.Income;
   var Occasion = req.body.queryResult.parameters.Occasion;
   var Budget = req.body.queryResult.parameters.Budget;
+  var Eventdate = req.body.query.parameters.Event_Date;
+  var Recurring = req.body.query.parameters.Recurring_Expenses;
+  var Savings = 0;
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
     req.body.queryResult.parameters.Budget 
-      ? "check your calendar. Your budget is " + Budget
+      ? "check your calendar. Your savings is " + Budget
       : "Seems like some problem. Speak again.";
   
   /*** chirayu add */
