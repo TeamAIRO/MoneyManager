@@ -214,7 +214,7 @@ restService.post("/money", function(req, res) {
       req.body.queryResult.parameters &&
       req.body.queryResult.parameters.income
         ? "good morning"
-        : "You can not buy this" + totalprice;
+        : "You can not buy this";
      }
   }
      
