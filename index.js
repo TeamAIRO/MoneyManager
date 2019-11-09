@@ -11,6 +11,7 @@ var date2;
 var priority1, priority2;
 var occasion;
 var event_date;
+var totalprice;
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -174,6 +175,10 @@ restService.post("/money", function(req, res) {
   var recurring = req.body.queryResult.parameters.Recurring_Expenses;
   var savings = income - (recurring + budget);
   var negsavings = -1 * savings;
+  var item = req.body.queryResult.parameters.Item;
+  var price = req.body.queryResult.parameters.Price;
+  totalprice = totalprice + price;
+  if(totalprice == 0){
   if(savings < 0){
   var speech =
     req.body.queryResult &&
@@ -190,7 +195,27 @@ restService.post("/money", function(req, res) {
       ? "good morning"
       : "Your events have been saved to your calendar and managed your financials for the week! Your savings for this week are $" + savings + ". Your income is $" + income;
   }
-  /*** chirayu add */
+  }
+  else{
+     if(totalprice < savings){
+      var speech =
+      req.body.queryResult &&
+      req.body.queryResult.parameters &&
+      req.body.queryResult.parameters.income
+        ? "good morning"
+        : "You can buy this";
+     }
+     else{
+     var speech =
+      req.body.queryResult &&
+      req.body.queryResult.parameters &&
+      req.body.queryResult.parameters.income
+        ? "good morning"
+        : "You can not buy this";
+     }
+  }
+     
+     
   // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
