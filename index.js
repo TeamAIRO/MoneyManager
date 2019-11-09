@@ -173,13 +173,23 @@ restService.post("/money", function(req, res) {
   event_date = req.body.queryResult.parameters.Event_Date;
   var recurring = req.body.queryResult.parameters.Recurring_Expenses;
   var savings = income - (recurring + budget);
+  var negsavings = -1 * savings;
+  if(savings >= 0){
+  var speech =
+    req.body.queryResult &&
+    req.body.queryResult.parameters &&
+    req.body.queryResult.parameters.income
+      ? "good morning"
+      : "Your events have been saved to your calendar and managed your financials for the week! You have lost $" + negsavings + ". Watch your budget next week. Your income is $" + income;
+  }
+  else{
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
     req.body.queryResult.parameters.income
       ? "good morning"
       : "Your events have been saved to your calendar and managed your financials for the week! Your savings for this week are $" + savings + ". Your income is $" + income;
-  
+  }
   /*** chirayu add */
   // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
