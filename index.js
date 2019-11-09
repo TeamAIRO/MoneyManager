@@ -240,7 +240,7 @@ restService.post("/money", function(req, res) {
       req.body.queryResult.parameters &&
       req.body.queryResult.parameters.income
         ? "good morning"
-        : "This purchase is not recommended. Your savings are now $" + (savings - totalprice);
+        : "This purchase is not recommended. Your savings, if you choose to buy it, would be $" + (savings - totalprice);
      }
   }
   }
