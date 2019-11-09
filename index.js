@@ -171,7 +171,7 @@ restService.post("/money", function(req, res) {
   var budget = req.body.queryResult.parameters.Budget;
   var eventdate = req.body.queryResult.parameters.Event_Date;
   var recurring = req.body.queryResult.parameters.Recurring_Expenses;
-  var savings = Income - (Recurring + Budget);
+  var savings = income - (recurring + budget);
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
