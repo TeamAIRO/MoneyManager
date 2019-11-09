@@ -176,7 +176,7 @@ restService.post("/money", function(req, res) {
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
-    req.body.queryResult.parameters.budget 
+    req.body.queryResult.parameters.income
       ? "good morning"
       : "Seems like some problem. Speak again.";
   
