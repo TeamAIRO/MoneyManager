@@ -237,6 +237,7 @@ restService.post("/money", function(req, res) {
     mgrocerystat = req.body.queryResult.parameters.stat_grocery;
     melecstat = req.body.queryResult.parameters.stat_electricity;
     mwaterstat = req.body.queryResult.parameters.stat_water;
+    console.log("We've escaped orbit. Probe being destroyed. The world is about to end. This is the error to end all errors. Goodbye.")
     if(mgasstat>gasstat){
       var frag1 = " Your gas spending is above average. Try to reduce.";
     }
