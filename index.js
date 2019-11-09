@@ -231,6 +231,7 @@ restService.post("/money", function(req, res) {
         : "This purchase is not recommended";
      }
   }
+  }
   else{
     mgasstat = req.body.queryResult.parameters.stat_gas;
     mgrocerystat = req.body.queryResult.parameters.stat_grocery;
