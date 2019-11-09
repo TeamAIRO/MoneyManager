@@ -232,7 +232,7 @@ restService.post("/money", function(req, res) {
       req.body.queryResult.parameters &&
       req.body.queryResult.parameters.income
         ? "good morning"
-        : "You can buy this" + totalprice;
+        : "You can buy this. Your savings are now $" + (savings - totalprice);
      }
      else{
      var speech =
