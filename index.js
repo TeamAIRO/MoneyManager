@@ -192,6 +192,7 @@ restService.post("/money", function(req, res) {
   mgrocerystat = req.body.queryResult.parameters.stat_grocery;
   melecstat = req.body.queryResult.parameters.stat_electricity;
   mwaterstat = req.body.queryResult.parameters.stat_water;
+  var savinggoal = req.body.queryResult.parameters.Savings_goal;
   if(mgasstat == undefined){
   if(totalprice == 0){
   income = req.body.queryResult.parameters.Income;
@@ -210,12 +211,18 @@ restService.post("/money", function(req, res) {
       : "Your events have been saved to your calendar and managed your financials for the week! You have lost $" + negsavings + ". Watch your budget next week. Your income is $" + income;
   }
   else{
+  if(savings<savinggoal){
+    var frag5 = " You weren't able to beat your saving goal! Try again next week.";
+  }
+  else{
+    var frag5 = " You beat your savings goal successfully! Good job!";
+  }
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
     req.body.queryResult.parameters.income
       ? "good morning"
-      : "Your events have been saved to your calendar and managed your financials for the week! Your savings for this week are $" + savings + ". Your income is $" + income;
+      : "Your events have been saved to your calendar and managed your financials for the week! Your savings for this week are $" + savings + ". Your income is $" + income + "." + frag5;
   }
   }
   else{
