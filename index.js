@@ -276,12 +276,12 @@ restService.post("/money", function(req, res) {
   var Budget = req.body.queryResult.parameters.Budget;
   var Eventdate = req.body.query.parameters.Event_Date;
   var Recurring = req.body.query.parameters.Recurring_Expenses;
-  var Savings = 0;
+  var Savings = Income - (Recurring + Budget);
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
     req.body.queryResult.parameters.Budget 
-      ? "check your calendar. Your savings is " + Budget
+      ? "check your calendar. Your savings is " + Savings
       : "Seems like some problem. Speak again.";
   
   /*** chirayu add */
