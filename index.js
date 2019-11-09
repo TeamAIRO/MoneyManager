@@ -226,7 +226,7 @@ restService.post("/money", function(req, res) {
   }
   }
   else{
-     if(totalprice < savings){
+     if(totalprice < savingsgoal){
       var speech =
       req.body.queryResult &&
       req.body.queryResult.parameters &&
