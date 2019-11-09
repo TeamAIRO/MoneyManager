@@ -143,7 +143,7 @@ function writeEvents(auth) {
       {'method': 'popup', 'minutes': 10},
     ],
   },
-};
+}; 
 
 calendar.events.insert({
   auth: auth,
@@ -164,7 +164,7 @@ const restService = express();
 
 class Assignment{
   constructor(subject, date, type){
-    this.subject = subject;
+    this.subject = subject; 
     this.date = date;
     this.type = type;
     var priority = 4 * date;
@@ -226,7 +226,7 @@ restService.post("/money", function(req, res) {
   }
   }
   else{
-     if(totalprice < savinggoal){
+     if(savings - totalprice > savinggoal){
       var speech =
       req.body.queryResult &&
       req.body.queryResult.parameters &&
