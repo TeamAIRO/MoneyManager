@@ -178,7 +178,7 @@ restService.post("/money", function(req, res) {
     req.body.queryResult.parameters &&
     req.body.queryResult.parameters.income
       ? "good morning"
-      : "Your events have been saved to your calendar and managed your financials for the week! Your savings for this week are $" + savings;
+      : "Your events have been saved to your calendar and managed your financials for the week! Your savings for this week are $" + savings + ". Your income is $" + income;
   
   /*** chirayu add */
   // Load client secrets from a local file.
