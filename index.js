@@ -11,7 +11,7 @@ var date2;
 var priority1, priority2;
 var occasion;
 var event_date;
-var totalprice;
+var totalprice = 0;
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
