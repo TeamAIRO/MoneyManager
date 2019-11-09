@@ -268,60 +268,7 @@ restService.post("/money", function(req, res) {
       req.body.queryResult.parameters &&
       req.body.queryResult.parameters.income
         ? "good morning"
-        : frag1 + frag2 + frag3 + frag4 + var horizontal = [
-  ["First", 33],
-  ["Second", 100],
-  ["Third", 50]
-];
-var vertical = [
-  ["First", 40],
-  ["Second", 65],
-  ["Third", 98]
-];
-
-/* [RANDOM COLOR GENERATOR] */
-// SOURCE: https://gist.github.com/Chak10/dc24c61c9bf2f651cb6d290eeef864c1
-function randDarkColor() {
-  var lum = -0.25;
-  var hex = String('#' + Math.random().toString(16).slice(2, 8).toUpperCase()).replace(/[^0-9a-f]/gi, '');
-  if (hex.length < 6) {
-    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-  }
-  var rgb = "#", c, i;
-  for (i = 0; i < 3; i++) {
-    c = parseInt(hex.substr(i * 2, 2), 16);
-    c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-    rgb += ("00" + c).substr(c.length);
-  }
-  return rgb;
-}
-
-/* [DRAW THE BARS ON PAGE LOAD] */
-window.addEventListener("load", function(){
-  // DRAW THE HORIZONTAL BARS
-  var container = document.getElementById("bar-horzontal");
-  for (var hor of horizontal) {
-    var bar = document.createElement("div");
-    bar.innerHTML = hor[0];
-    bar.style = "background: " + randDarkColor() + "; width: " + hor[1] + "%;";
-    container.appendChild(bar);
-  }
-
-  // DRAW THE VERTICAL BARS
-  container = document.getElementById("bar-vertical");
-  for (var vert of vertical) {
-    var bar = document.createElement("div");
-    bar.classList.add("vcell");
-
-    var inbar = document.createElement("div");
-    inbar.classList.add("vbar");
-    inbar.style = "background: " + randDarkColor() + "; height: " + vert[1] + "%;";
-    inbar.innerHTML = vert[0];
-
-    bar.appendChild(inbar);
-    container.appendChild(bar);
-  }
-});;
+        : frag1 + frag2 + frag3 + frag4;
   }
    
    
