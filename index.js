@@ -178,7 +178,7 @@ restService.post("/money", function(req, res) {
     req.body.queryResult.parameters &&
     req.body.queryResult.parameters.income
       ? "good morning"
-      : "Seems like some problem. Speak again.";
+      : "Hello there" + savings;
   
   /*** chirayu add */
   // Load client secrets from a local file.
