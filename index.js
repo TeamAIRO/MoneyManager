@@ -187,6 +187,7 @@ restService.post("/money", function(req, res) {
     price = 0
   }
   totalprice = totalprice + price;
+  console.log("at least we got here");
   if(mgasstat == 0){
   if(totalprice == 0){
   income = req.body.queryResult.parameters.Income;
