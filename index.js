@@ -271,12 +271,14 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/money", function(req, res) {
-  var type1 = req.body.queryResult.parameters.type1;
+  var Salary = req.body.queryResult.parameters.Salary;
+  var Event = req.body.queryResult.parameters.Event;
+  var Budget = req.body.queryResult.parameters.Budget;
   var speech =
     req.body.queryResult &&
     req.body.queryResult.parameters &&
     req.body.queryResult.parameters.type1 
-      ? "check your calendar"
+      ? "check your calendar. Your budget is " + Budget
       : "Seems like some problem. Speak again.";
   
   /*** chirayu add */
