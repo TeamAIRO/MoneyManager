@@ -177,6 +177,9 @@ restService.post("/money", function(req, res) {
   var negsavings = -1 * savings;
   var item = req.body.queryResult.parameters.Item;
   var price = req.body.queryResult.parameters.Price;
+  if(price.isNaN()){
+    price = 0
+  }
   totalprice = totalprice + price;
   if(totalprice == 0){
   if(savings < 0){
